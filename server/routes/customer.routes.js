@@ -6,7 +6,6 @@ import { isAuthenticated } from '../middlewares/auth.middleware.js'
 
 const customerRoutes = express.Router()
 
-// register
 
 customerRoutes.post('/register' , registerCustomer)
 

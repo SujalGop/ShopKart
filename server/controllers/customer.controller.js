@@ -2,7 +2,6 @@ import Customer from "../models/customer.model.js"
 import bcrypt from 'bcrypt'
 import { genToken } from "../utils/generateToken.js"
 
-// Register Controller
 
 const cookiesOptions = {
     httpOnly: true,
@@ -12,9 +11,7 @@ const cookiesOptions = {
 export const registerCustomer = async (req, res) => {
     try {
         const { fullname, email, password, phone } = req.body
-        // all fileds present 
-        // if the email or username already exists
-        // password should be greater tha 6 characters
+        
 
         if (!fullname || !email || !password || !phone) {
             return res.status(400).json({ message: "All fields Required" })
@@ -38,7 +35,6 @@ export const registerCustomer = async (req, res) => {
         }
 
 
-        // Password Security
 
         const salt = await bcrypt.genSalt(10)
 
@@ -55,9 +51,7 @@ export const registerCustomer = async (req, res) => {
             password: hashedPassword
         })
 
-        // newUser._id
 
-        // token  - jwt  - access token 
 
         const token = genToken(newCustomer._id)
 
